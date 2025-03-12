@@ -70,7 +70,13 @@ function Sidebar() {
 
   return (
     <aside id="sidebar" className="sidebar">
+      <div style={{backgroundColor:'darkblue',color:'white',textAlign:'center',padding:'0.2cm'}}>
+         <b>{role}</b>
+      </div>
+       
+      
       <ul className="sidebar-nav" id="sidebar-nav">
+    
         {/* Role-based Menu Items */}
         {role &&
           menuItems[role]?.map((item, index) => (
