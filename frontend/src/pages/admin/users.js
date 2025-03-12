@@ -207,8 +207,8 @@ useEffect(() => {
                         {users.map((user, index) => (
                           <tr key={user.id}>
                             <td>{`${user.firstname} ${user.lastname}`}</td>
-                            <td>{`${user.role}`}</td>
                             <td>{user.email}</td>
+                            <td>{`${user.role}`}</td>
                             <td>
                                 <button className='btn btn-outline-primary' onClick={() => handleView(user.id)}>view</button>
                               </td>

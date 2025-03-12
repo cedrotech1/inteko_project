@@ -117,8 +117,20 @@ const AddUser = () => {
       {message && <div className="alert alert-info">{message}</div>}
       <form onSubmit={handleSubmit} className="row g-3">
       <div className="col-md-6">
-          <input type="number" name="nid" className="form-control" placeholder="National ID Number" onChange={handleChange} required />
-        </div>
+  <input
+    type="text"
+    name="nid"
+    className="form-control"
+    placeholder="National ID Number"
+    onChange={handleChange}
+    required
+    maxLength="16"
+    minLength="16"
+    pattern="\d{16}"
+    title="National ID must be exactly 16 digits"
+  />
+</div>
+
         <div className="col-md-6">
           <input type="text" name="firstname" className="form-control" placeholder="First Name" onChange={handleChange} required />
         </div>
