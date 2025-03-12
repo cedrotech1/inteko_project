@@ -33,7 +33,7 @@ function Sidebar() {
       { label: "Manage Post Types", icon: "bi-tags", link: "../post_type" },
       { label: "Report", icon: "bi-tags", link: "../report" },
       { label: "Notifications", icon: "bi-bell", link: "../notifications" },
-      { label: "Fines", icon: "bi-bell", link: "../fines" },
+      { label: "Fines", icon: "bi-file", link: "../fines" },
     ],
     province_leader: [
       { label: "View Posts", icon: "bi-file-earmark-text", link: "../post" },
