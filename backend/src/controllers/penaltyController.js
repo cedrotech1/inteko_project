@@ -478,7 +478,7 @@ const waitForPaymentApproval = async (transactionId) => {
 export const getPenalties = async (req, res) => {
   try {
     let whereCondition = {};
-    let statusArray = []; // Define an array of statuses for filtering
+    let statusArray = [];
     let includeCondition = [
       {
         model: Users,
@@ -492,14 +492,12 @@ export const getPenalties = async (req, res) => {
     ];
 
     if (!req.user) {
-      // If the user is not logged in, return all public penalties or a subset of penalties
-      whereCondition.status = ["paid", "unpaid", "pending"]; // Public penalties for everyone
+      whereCondition.status = ["paid", "un paid", "pending"];
     } else {
       const { role, province_id, district_id, sector_id, cell_id, village_id } = req.user;
-      
-      // Define status arrays based on roles
+
       if (role === "admin") {
-        statusArray = ["paid", "un paid", "pending"]; // Admin can see all statuses
+        statusArray = ["paid", "un paid", "pending"];
       } else if (role === "province_leader") {
         statusArray = ["paid", "un paid"];
         whereCondition["$post.province_id$"] = province_id;
@@ -516,14 +514,14 @@ export const getPenalties = async (req, res) => {
         statusArray = ["paid", "un paid", "pending"];
         whereCondition["$post.village_id$"] = village_id;
       } else if (role === "citizen") {
-        statusArray = ["paid","un paid",];
+        statusArray = ["paid", "un paid"];
         whereCondition["$post.village_id$"] = village_id;
       }
 
       whereCondition.status = statusArray;
     }
 
-    // Fetching penalties with additional statistics
+    // Fetch penalties
     const penalties = await Penalties.findAll({
       where: whereCondition,
       include: includeCondition,
@@ -531,12 +529,19 @@ export const getPenalties = async (req, res) => {
 
     // Calculate statistics
     const totalPenalties = penalties.length;
-    const totalAmount = penalties.reduce((sum, penalty) => sum + parseFloat(penalty.penarity || 0), 0); // Corrected 'penarity' field for total amount calculation
-    const paidCount = penalties.filter(penalty => penalty.status === "paid").length;
-    const unpaidCount = penalties.filter(penalty => penalty.status === "unpaid").length;
+    const totalAmount = penalties.reduce((sum, penalty) => sum + parseFloat(penalty.penarity || 0), 0);
+    
+    const paidPenalties = penalties.filter(penalty => penalty.status === "paid");
+    const unpaidPenalties = penalties.filter(penalty => penalty.status === "un paid");
+
+    const paidCount = paidPenalties.length;
+    const unpaidCount = unpaidPenalties.length;
     const pendingCount = penalties.filter(penalty => penalty.status === "pending").length;
 
-    // Return the result with statistics
+    const totalPaidAmount = paidPenalties.reduce((sum, penalty) => sum + parseFloat(penalty.penarity || 0), 0);
+    const totalUnpaidAmount = unpaidPenalties.reduce((sum, penalty) => sum + parseFloat(penalty.penarity || 0), 0);
+
+    // Return response
     return res.status(200).json({
       success: true,
       message: "Penalties retrieved successfully",
@@ -544,6 +549,8 @@ export const getPenalties = async (req, res) => {
       statistics: {
         totalPenalties,
         totalAmount,
+        totalPaidAmount,   // Display total paid amount
+        totalUnpaidAmount, // Display total unpaid amount
         paidCount,
         unpaidCount,
         pendingCount,
@@ -557,6 +564,7 @@ export const getPenalties = async (req, res) => {
     });
   }
 };
+
 
 export const fixedCheckout = async (req, res) => {
   try {

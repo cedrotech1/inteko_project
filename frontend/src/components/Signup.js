@@ -141,7 +141,20 @@ const AddUser = () => {
           <input type="email" name="email" className="form-control" placeholder="Email" onChange={handleChange} required />
         </div>
         <div className="col-md-6">
-          <input type="text" name="phone" className="form-control" placeholder="Phone" onChange={handleChange} required />
+    
+  <input
+    type="text"
+    name="phone"
+    className="form-control"
+    placeholder="Phone number"
+    onChange={handleChange}
+    required
+    maxLength="10"
+    minLength="10"
+    pattern="\d{10}"
+    title="Phone number must be exactly 10 digits"
+  />
+
         </div>
       
         <div className="col-md-6">
