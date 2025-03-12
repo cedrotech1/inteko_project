@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import Leaders from '../../components/addUser';
 
 function Home() {
-
-  
   return (
     <>
       <main id="main" className="main">
