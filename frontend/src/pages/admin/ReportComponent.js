@@ -74,7 +74,7 @@ const PenaltiesReport = () => {
       {/* Statistics */}
       {statistics && (
         <Row className="mb-4">
-          <Col md={4}>
+          <Col md={3}>
             <Card className="text-center shadow-sm">
               <Card.Body>
                 <FaMoneyBillAlt size={40} className="" style={{marginTop:'0.5cm'}}/>
@@ -83,24 +83,36 @@ const PenaltiesReport = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4}>
+          <Col md={3}>
             <Card className="text-center shadow-sm">
               <Card.Body>
-                <FaCheckCircle size={40} className="text-success" style={{marginTop:'0.5cm'}} />
+                <FaMoneyBillAlt size={40} className="" style={{marginTop:'0.5cm'}}/>
+                <Card.Title>Total paid Amount</Card.Title>
+                <h3>{statistics.totalPaidAmount} Rwf</h3>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card className="text-center shadow-sm">
+              <Card.Body>
+                <FaMoneyBillAlt size={40} className="" style={{marginTop:'0.5cm'}}/>
+                <Card.Title>Total un paid Amount</Card.Title>
+                <h3>{statistics.totalUnpaidAmount} Rwf</h3>
+              </Card.Body>
+            </Card>
+          </Col>
+        
+          <Col md={3}>
+            <Card className="text-center shadow-sm">
+              <Card.Body>
+                {/* <FaCheckCircle size={40} className="text-success" style={{marginTop:'0.5cm'}} /> */}
                 <Card.Title>Paid</Card.Title>
-                <h3>{statistics.paidCount}</h3>
+                <h5>{statistics.paidCount} paid</h5><br/>
+                <h5>{statistics.unpaidCount} un paid</h5><br/>
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4}>
-            <Card className="text-center shadow-sm">
-              <Card.Body>
-                <FaTimesCircle size={40} className="text-danger" style={{marginTop:'0.5cm'}}/>
-                <Card.Title>Unpaid</Card.Title>
-                <h3>{statistics.unpaidCount}</h3>
-              </Card.Body>
-            </Card>
-          </Col>
+        
        
         </Row>
       )}
