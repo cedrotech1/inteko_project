@@ -124,7 +124,9 @@ const PostList = () => {
                     </Card.Text>
 
                    
-
+                    <Button variant="info" size="sm" href={`/attandance_report/${post.id}`}>
+                                              <FaEye className="me-1" /> Report
+                                            </Button>
                     <div className="mt-2 d-flex justify-content-between">
                       <Button
                         variant="success"
@@ -136,8 +138,10 @@ const PostList = () => {
                       </Button>
                       <div className="d-flex justify-content-between">
                       <Button variant="primary" size="sm" href={`/post/${post.id}`}>
-                        <FaEye className="me-1" /> view
+                        <FaEye className="" /> view
                       </Button>
+                     
+                       
                     
                     </div>
 

@@ -130,7 +130,9 @@ const PostList = () => {
                       <Button variant="primary" size="sm" href={`/post/${post.id}`}>
                         <FaEye className="me-1" /> Read More
                       </Button>
-                     
+                          <Button variant="info" size="sm" href={`/attandance_report/${post.id}`}>
+                                                                   <FaEye className="me-1" /> Report
+                                                                 </Button>
                     </div>
 
                   
