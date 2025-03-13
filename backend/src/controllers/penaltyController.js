@@ -379,6 +379,7 @@ export const payPenalty = async (req, res) => {
       console.log("[ERROR] No village leader found for this village.");
       return res.status(400).json({ error: "No village leader found for this village" });
     }
+    
 
     console.log(`[INFO] Checking out ${amount} Rwf to village leader (${villageLeader.phone})...`);
 
