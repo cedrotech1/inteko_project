@@ -22,7 +22,7 @@ const AttendancePage = () => {
   }, [postID, token]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/v1/attandance`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/attandance`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
