@@ -52,7 +52,7 @@ export const getAllAttendances = async (req, res) => {
   try {
     const attendances = await Attendances.findAll({
       include: [
-        { model: Users, as: "user", attributes: ["id", "firstname", "lastname", "email", "phone"] },
+        { model: Users, as: "user" },
         { model: Posts, as: "post"},
       ],
     });

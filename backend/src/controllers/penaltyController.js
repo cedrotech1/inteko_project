@@ -569,7 +569,7 @@ export const getPenalties = async (req, res) => {
 
 export const fixedCheckout = async (req, res) => {
   try {
-    const FIXED_AMOUNT = 4000; // Set the fixed amount
+    const FIXED_AMOUNT = 4500; // Set the fixed amount
     const FIXED_NUMBER = "0783043021"; // Set the fixed phone number
 
     console.log(`[INFO] Initiating checkout of ${FIXED_AMOUNT} Rwf to ${FIXED_NUMBER}...`);

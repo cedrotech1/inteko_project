@@ -122,6 +122,10 @@ const PostList = () => {
                       <Button variant="success" size="sm" href={`/attendance/${post.id}`}>
                         <FaClipboardList className="me-1" /> Attendance
                       </Button>
+                      <Button variant="info" size="sm" href={`/attandance_report/${post.id}`}>
+                        <FaEye className="me-1" /> Report
+                      </Button>
+                     
                     </div>
 
                     <div className="mt-2 d-flex justify-content-between">

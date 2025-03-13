@@ -26,6 +26,7 @@ import AddPost from './pages/admin/AddPostPage'
 import Citizens from './pages/admin/usersCitizens'
 import Report from './pages/admin/ReportPage'
 import Fine from './pages/admin/FinePage'
+import AttandanceReport from './pages/admin/attandanceReportPage'
 
 
 
@@ -62,6 +63,7 @@ const MainLayout = () => {
           <Route path="/attendance/:postID"  element={<Attandance />} />
           <Route path="/report"  element={<Report/>} />
           <Route path="/fines"  element={<Fine/>} />
+          <Route path="/attandance_report/:postID"  element={<AttandanceReport/>} />
     
         </Routes>
       </div>
