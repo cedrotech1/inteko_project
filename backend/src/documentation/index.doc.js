@@ -28,6 +28,8 @@ const options = {
     { name: "attandance", description: "attandance" },
     { name: "penalties", description: "penalties" },
     { name: "Fine", description: "Fine" },
+    { name: "product", description: "Products" },
+    { name: "stock", description: "stock" },
 
 
 
@@ -118,6 +120,44 @@ const options = {
         },
       },
     },
+
+    "/api/v1/product": {
+      post: {
+        tags: ["product"],
+        summary: "Add a product",
+        description: "Add a product",
+        operationId: "addOneproduct",
+        requestBody: {
+          content: {
+            "application/json": {
+          
+              example: {
+                
+                name: "product name",
+                description: "product description",
+             
+              },
+            },
+            required: true,
+          },
+        },
+        responses: {
+          201: {
+            description: "User created successfully",
+          },
+          400: {
+            description: "Bad request",
+          },
+          401: {
+            description: "Unauthorized",
+          },
+          500: {
+            description: "Something went wrong",
+          },
+        },
+      },
+    },
+
 
 
 

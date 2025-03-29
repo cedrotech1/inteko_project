@@ -10,11 +10,13 @@ import Address from './AddressRouter.js';
 import Attandance from './attandanceRoute.js';
 import Penarity from './penarities.js';
 import Fine from './penarityAmountRoutes.js';
+import Products from './productsRoutes.js';
 const router = express.Router();
 
 router.use('/docs', docrouter);
 router.use('/users', userRouter);
 router.use('/auth', authRouter);
+router.use('/product', Products);
 router.use('/post', Post);
 router.use('/penalties', Penarity);
 router.use('/attandance', Attandance);
